@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
-void main() => runApp(MyImageViewEriko());
+void main() => runApp(MyDragAndDrop());
 
 class AppStateFullWidget extends StatefulWidget {
   const AppStateFullWidget({super.key});
@@ -628,5 +628,74 @@ class _MyImageViewErikoState extends State<MyImageViewEriko> {
         )),
       ),
     ));
+  }
+}
+
+class MyDragAndDrop extends StatefulWidget {
+  const MyDragAndDrop({super.key});
+
+  @override
+  State<MyDragAndDrop> createState() => _MyDragAndDropState();
+}
+
+class _MyDragAndDropState extends State<MyDragAndDrop> {
+  Color color1 = Colors.red;
+  Color color2 = Colors.amber;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("Flutter drag and drop")),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Draggable<Color>(
+                  data: color1,
+                  feedback: SizedBox(
+                    width: 150,
+                    height: 50,
+                    child: Material(
+                      color: Colors.black38.withOpacity(0.5),
+                      shape: StadiumBorder(),
+                      elevation: 15,
+                    ),
+                  ),
+                  child: SizedBox(
+                    width: 150,
+                    height: 50,
+                    child: Material(
+                      color: Colors.blue,
+                      shape: StadiumBorder(),
+                      elevation: 15,
+                    ),
+                  ),
+                  childWhenDragging: SizedBox(
+                    width: 150,
+                    height: 50,
+                    child: Material(
+                      color: Colors.black12,
+                      shape: StadiumBorder(),
+                      elevation: 10,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  height: 50,
+                  child: Material(
+                    color: Colors.red,
+                    shape: StadiumBorder(),
+                    elevation: 10,
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
