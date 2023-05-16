@@ -3,8 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:test_flutter_01/login_page.dart';
 
-void main() => runApp(MyDragAndDrop());
+void main() => runApp(MyMultiplePage());
 
 class AppStateFullWidget extends StatefulWidget {
   const AppStateFullWidget({super.key});
@@ -748,6 +749,22 @@ class _MyDragAndDropState extends State<MyDragAndDrop> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class MyMultiplePage extends StatefulWidget {
+  const MyMultiplePage({super.key});
+
+  @override
+  State<MyMultiplePage> createState() => _MyMultiplePageState();
+}
+
+class _MyMultiplePageState extends State<MyMultiplePage> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: LoginPage(),
     );
   }
 }
