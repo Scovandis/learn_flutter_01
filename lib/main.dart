@@ -641,6 +641,9 @@ class MyDragAndDrop extends StatefulWidget {
 class _MyDragAndDropState extends State<MyDragAndDrop> {
   Color color1 = Colors.red;
   Color color2 = Colors.amber;
+  late Color targetColor;
+  bool isAccept = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -658,7 +661,7 @@ class _MyDragAndDropState extends State<MyDragAndDrop> {
                     width: 150,
                     height: 50,
                     child: Material(
-                      color: Colors.black38.withOpacity(0.5),
+                      color: color1,
                       shape: StadiumBorder(),
                       elevation: 15,
                     ),
@@ -667,7 +670,7 @@ class _MyDragAndDropState extends State<MyDragAndDrop> {
                     width: 150,
                     height: 50,
                     child: Material(
-                      color: Colors.blue,
+                      color: color1,
                       shape: StadiumBorder(),
                       elevation: 15,
                     ),
@@ -682,16 +685,65 @@ class _MyDragAndDropState extends State<MyDragAndDrop> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 150,
-                  height: 50,
-                  child: Material(
-                    color: Colors.red,
-                    shape: StadiumBorder(),
-                    elevation: 10,
+                Draggable<Color>(
+                  data: color2,
+                  feedback: SizedBox(
+                    width: 150,
+                    height: 50,
+                    child: Material(
+                      color: color2,
+                      shape: StadiumBorder(),
+                      elevation: 15,
+                    ),
                   ),
-                )
+                  child: SizedBox(
+                    width: 150,
+                    height: 50,
+                    child: Material(
+                      color: color2,
+                      shape: StadiumBorder(),
+                      elevation: 15,
+                    ),
+                  ),
+                  childWhenDragging: SizedBox(
+                    width: 150,
+                    height: 50,
+                    child: Material(
+                      color: Colors.black12,
+                      shape: StadiumBorder(),
+                      elevation: 10,
+                    ),
+                  ),
+                ),
               ],
+            ),
+            DragTarget(
+              onWillAccept: (value) => true,
+              onAccept: (value) {
+                isAccept = true;
+                targetColor = value as Color;
+              },
+              builder: (context, candidateData, rejectedData) {
+                return (isAccept)
+                    ? SizedBox(
+                        width: 150,
+                        height: 150,
+                        child: Material(
+                          color: targetColor,
+                          shape: StadiumBorder(),
+                          elevation: 3,
+                        ),
+                      )
+                    : SizedBox(
+                        width: 150,
+                        height: 150,
+                        child: Material(
+                          color: Colors.black12,
+                          shape: StadiumBorder(),
+                          elevation: 3,
+                        ),
+                      );
+              },
             )
           ],
         ),
