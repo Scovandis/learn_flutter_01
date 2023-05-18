@@ -5,7 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:test_flutter_01/login_page.dart';
 
-void main() => runApp(MyMediaQuery());
+void main() => runApp(MyInkWell());
 
 class AppStateFullWidget extends StatefulWidget {
   const AppStateFullWidget({super.key});
@@ -813,5 +813,62 @@ class MainPage extends StatelessWidget {
         height: 100,
       )
     ];
+  }
+}
+
+class MyInkWell extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Flutter InkWell"),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ElevatedButton(
+                onPressed: () => {},
+                child: Text("Elevate button"),
+                style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.blue),
+              ),
+              Material(
+                borderRadius: BorderRadius.circular(20),
+                elevation: 3,
+                child: Container(
+                  width: 150,
+                  height: 50,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.transparent,
+                    child: InkWell(
+                        borderRadius: BorderRadius.circular(20),
+                        splashColor: Colors.amber,
+                        onTap: () => {},
+                        child: Center(
+                          child: Text(
+                            "InkButton",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        )),
+                  ),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      gradient: LinearGradient(
+                          colors: [Colors.amber, Colors.blue],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter)),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
