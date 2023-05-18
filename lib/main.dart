@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
-void main() => runApp(MyImageViewEriko());
+void main() => runApp(MyClipPath());
 
 class AppStateFullWidget extends StatefulWidget {
   const AppStateFullWidget({super.key});
@@ -629,4 +629,89 @@ class _MyImageViewErikoState extends State<MyImageViewEriko> {
       ),
     ));
   }
+}
+
+class MyClipPath extends StatelessWidget {
+  @override
+  Widget build(BuildContext) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Flutter Clipper"),
+        ),
+        body: Center(
+            child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: 30, right: 30),
+              alignment: Alignment.center,
+              child: ClipPath(
+                child: SizedBox(
+                  width: 320,
+                  height: 240,
+                  child: Image.asset(
+                    "asset/design_01.png",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                clipper: MyClipper(),
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.all(20),
+              child: ClipPath(
+                clipper: ClipperEriko(),
+                child: Image(
+                    image: NetworkImage(
+                        "https://www.surfertoday.com/images/stories/sunrisesunsettime.jpg")),
+              ),
+            )
+          ],
+        )),
+      ),
+    );
+  }
+}
+
+class ClipperEriko extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+
+    path.lineTo(0, size.height);
+    path.quadraticBezierTo(
+        size.width / 2, size.height * 0.75, size.width, size.height);
+    path.lineTo(size.width, 0);
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
+}
+
+class MyClipper extends CustomClipper<Path> {
+  @override
+  getClip(Size size) {
+    var path = Path();
+    path.lineTo(0.0, size.height - 30);
+
+    var firstControlPoint = Offset(size.width / 4, size.height);
+    var firstPoint = Offset(size.width / 2, size.height);
+    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
+        firstPoint.dx, firstPoint.dy);
+
+    var secondControlPoint = Offset(size.width - (size.width / 4), size.height);
+    var secondPoint = Offset(size.width, size.height - 30);
+    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
+        secondPoint.dx, secondPoint.dy);
+
+    path.lineTo(size.width, 0.0);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper oldClipper) => false;
 }
