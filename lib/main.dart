@@ -5,7 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:test_flutter_01/login_page.dart';
 
-void main() => runApp(MyMultiplePage());
+void main() => runApp(MyMediaQuery());
 
 class AppStateFullWidget extends StatefulWidget {
   const AppStateFullWidget({super.key});
@@ -766,5 +766,52 @@ class _MyMultiplePageState extends State<MyMultiplePage> {
     return MaterialApp(
       home: LoginPage(),
     );
+  }
+}
+
+class MyMediaQuery extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MainPage(),
+    );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Flutter MediaQuery"),
+      ),
+      body: (MediaQuery.of(context).orientation == Orientation.portrait)
+          ? Column(
+              children: generateContainer,
+            )
+          : Row(
+              children: generateContainer,
+            ),
+    );
+  }
+
+  List<Widget> get generateContainer {
+    return [
+      Container(
+        color: Colors.red,
+        width: 100,
+        height: 100,
+      ),
+      Container(
+        color: Colors.green,
+        width: 100,
+        height: 100,
+      ),
+      Container(
+        color: Colors.blue,
+        width: 100,
+        height: 100,
+      )
+    ];
   }
 }
