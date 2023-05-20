@@ -3,8 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:test_flutter_01/httprequest/http_main.dart';
 
-void main() => runApp(MyClipPath());
+void main() => runApp(MyWidget());
 
 class AppStateFullWidget extends StatefulWidget {
   const AppStateFullWidget({super.key});
