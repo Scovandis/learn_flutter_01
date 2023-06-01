@@ -73,15 +73,22 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: A
+    - family: konkhmer-regular
       fonts:
         - asset: fonts\KonkhmerRegular.ttf
 
-    - family: B
+    - family: bruno-ace
       fonts:
         - asset: fonts\BrunoAceSC-Regular.ttf
-          # - asset: fonts/RobotoRegular.ttf
-          #   style: Regular
+
+    - family: roboto-bold
+      fonts:
+        - asset: fonts\RobotoBold.ttf
+
+    - family: roboto-regular
+      fonts:
+        - asset: fonts\RobotoRegular.ttf
+
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

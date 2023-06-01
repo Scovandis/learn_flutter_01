@@ -20,7 +20,7 @@ class MainPage extends StatelessWidget {
       appBar: AppBar(
           backgroundColor: Colors.red[400],
           title: Text(
-            "Custom Card Example",
+            "Flutter Custom Card",
             style: TextStyle(color: Colors.white),
           )),
       body: Stack(
@@ -70,13 +70,72 @@ class MainPage extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            "Beautiful sunrise at today.",
+                            "Beautiful sunrise at today 17:55 WIB.",
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 25,
-                                fontFamily: "fonts/KonkhmerRegular"),
+                                fontFamily: 'konkhmer-regular'),
                             maxLines: 2,
                             textAlign: TextAlign.center,
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 20, 0, 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Posted on",
+                                  style: TextStyle(
+                                      color: Colors.grey[400],
+                                      fontSize: 12,
+                                      fontFamily: 'roboto-regular'),
+                                ),
+                                Text(
+                                  "June 22, 2023",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 12,
+                                      fontFamily: 'bruno-ace'),
+                                )
+                              ],
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Spacer(
+                                flex: 10,
+                              ),
+                              Icon(
+                                Icons.thumb_up,
+                                size: 18,
+                                color: Colors.grey,
+                              ),
+                              Spacer(
+                                flex: 1,
+                              ),
+                              Text(
+                                "99",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              Spacer(
+                                flex: 5,
+                              ),
+                              Icon(
+                                Icons.comment,
+                                size: 18,
+                                color: Colors.grey,
+                              ),
+                              Spacer(
+                                flex: 1,
+                              ),
+                              Text(
+                                "888",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              Spacer(
+                                flex: 10,
+                              )
+                            ],
                           )
                         ],
                       ),
