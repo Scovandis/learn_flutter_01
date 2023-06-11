@@ -15,4 +15,9 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-create new branch from this branch, If you create new project to test.
+create new branch from this branch, If you create new project to test.á
+
+if you need the ruinning http_main.dart / request post
+running in termianal
+
+- flutter run --no-sound-null-safety
