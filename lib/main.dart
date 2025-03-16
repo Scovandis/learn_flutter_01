@@ -5,7 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:test_flutter_01/login_page.dart';
 
-void main() => runApp(MyInkWell());
+void main() => runApp(MyStackAndAlignWidget());
 
 class AppStateFullWidget extends StatefulWidget {
   const AppStateFullWidget({super.key});
